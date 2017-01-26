@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:background="@color/colorPrimaryLight"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+     <TextView
+        android:text="@string/list_header_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.4"
+        android:gravity="left|center_vertical"
+        style="@style/itemRow"/>
+
+    <TextView
+        android:text="@string/list_header_quantity"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.2"
+        android:gravity="center_horizontal|center_vertical"
+        style="@style/itemRow"/>
+
+    <TextView
+        android:text="@string/list_header_price"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.25"
+        android:gravity="center_horizontal|center_vertical"
+        style="@style/itemRow"/>
+
+    <!--
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.1"
+        style="@style/itemRow"/>
+
+        -->
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.1"
+        style="@style/itemRow"/>
+
+</LinearLayout>

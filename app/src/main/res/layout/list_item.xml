@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.4"
+        android:gravity="left|center_vertical"
+        android:focusable="false"
+        style="@style/itemRow"/>
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:gravity="center_horizontal|center_vertical"
+        android:focusable="false"
+        style="@style/itemRow"/>
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25"
+        android:gravity="center_horizontal|center_vertical"
+        android:focusable="false"
+        style="@style/itemRow"/>
+
+    <ImageButton
+        android:id="@+id/sellOneButton"
+        android:src="@drawable/ic_action_file_upload"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:focusable="false"
+        style="@style/button"/>
+
+    <ImageView
+        android:src="@drawable/ic_action_chevron_right"
+        android:layout_width="0dp"
+        android:layout_weight="0.1"
+        android:tint="@color/colorPrimaryDark"
+        android:layout_gravity="center"
+        android:focusable="false"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
