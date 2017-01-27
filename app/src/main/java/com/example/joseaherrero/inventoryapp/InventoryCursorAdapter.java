@@ -1,10 +1,14 @@
 package com.example.joseaherrero.inventoryapp;
 
+import android.app.LoaderManager;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.CursorLoader;
+import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,8 +26,8 @@ import com.example.joseaherrero.inventoryapp.data.InventoryContract.InventoryEnt
 
 public class InventoryCursorAdapter extends CursorAdapter {
 
-    public InventoryCursorAdapter(Context context, Cursor c) {
-        super(context, c, 0);
+    public InventoryCursorAdapter(Context context) {
+        super(context, null, 0);
     }
 
     @Override
@@ -61,7 +65,6 @@ public class InventoryCursorAdapter extends CursorAdapter {
         quantityTextView.setText(Utils.formatQuantity(quantity));
 
     }
-
 
 
 }

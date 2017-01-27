@@ -1,7 +1,10 @@
 package com.example.joseaherrero.inventoryapp;
 
+import android.app.LoaderManager;
 import android.content.ContentUris;
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.Loader;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -17,9 +20,11 @@ import com.example.joseaherrero.inventoryapp.data.InventoryContract;
 import com.example.joseaherrero.inventoryapp.data.InventoryDbHelper;
 import com.example.joseaherrero.inventoryapp.data.InventoryProvider;
 
-public class CatalogActivity extends AppCompatActivity {
+public class CatalogActivity extends AppCompatActivity  implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    public static final int LOAD_PRODUCTS = 1;
     private InventoryDbHelper mDbHelper;
+    private InventoryCursorAdapter mInventoryCursorAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,28 +75,42 @@ public class CatalogActivity extends AppCompatActivity {
     }
 
     private void displayDatabaseInfo() {
-        SQLiteDatabase db = mDbHelper.getReadableDatabase();
-
-        String[] projection = {
-                InventoryContract.InventoryEntry._ID,
-                InventoryContract.InventoryEntry.COLUMN_INVENTORY_NAME,
-                InventoryContract.InventoryEntry.COLUMN_INVENTORY_QUANTITY,
-                InventoryContract.InventoryEntry.COLUMN_INVENTORY_PRICE
-        };
-
-        Cursor cursor = getContentResolver().query(InventoryContract.InventoryEntry.CONTENT_URI,
-                projection,
-                null,
-                null,
-                null);
-
         ListView listView = (ListView) findViewById(R.id.list);
-        InventoryCursorAdapter inventoryCursorAdapter = new InventoryCursorAdapter(this, cursor);
+        mInventoryCursorAdapter = new InventoryCursorAdapter(this);
         if(listView.getHeaderViewsCount() == 0) {
             ViewGroup header = (ViewGroup)getLayoutInflater().inflate(R.layout.list_header, listView, false);
             listView.addHeaderView(header, null, false);
         }
-        listView.setAdapter(inventoryCursorAdapter);
+        listView.setAdapter(mInventoryCursorAdapter);
 
+        getLoaderManager().initLoader(LOAD_PRODUCTS, null, this);
+
+    }
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        switch (id) {
+            case LOAD_PRODUCTS:
+                String[] projection = {
+                        InventoryContract.InventoryEntry._ID,
+                        InventoryContract.InventoryEntry.COLUMN_INVENTORY_NAME,
+                        InventoryContract.InventoryEntry.COLUMN_INVENTORY_QUANTITY,
+                        InventoryContract.InventoryEntry.COLUMN_INVENTORY_PRICE
+                };
+
+                return new CursorLoader(this, InventoryContract.InventoryEntry.CONTENT_URI, projection, null, null, null);
+            default:
+            return null;
+        }
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+        mInventoryCursorAdapter.swapCursor(data);
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        mInventoryCursorAdapter.swapCursor(null);
     }
 }
