@@ -100,6 +100,12 @@ public class InventoryProvider extends ContentProvider {
             throw new IllegalArgumentException("Item requires a price");
         }
 
+        // Check the seller email is not null
+        String sellerEmail = values.getAsString(InventoryContract.InventoryEntry.COLUMN_INVENTORY_SELLER_EMAIL);
+        if (sellerEmail == null || sellerEmail.length() == 0) {
+            throw new IllegalArgumentException("Item requires a seller email");
+        }
+
         // Check the image is not null
         String image = values.getAsString(InventoryContract.InventoryEntry.COLUMN_INVENTORY_IMAGE);
         if (image == null) {

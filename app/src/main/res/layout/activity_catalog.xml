@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:dividerHeight="1dp"
-        android:focusable="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:divider="@color/colorDevider" />
 
     <!-- Empty view for the list -->

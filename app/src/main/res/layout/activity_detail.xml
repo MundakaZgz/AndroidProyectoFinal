@@ -38,6 +38,7 @@
             android:layout_width="0dp"
             android:layout_weight="2"
             android:textAppearance="?android:textAppearanceMedium"
+            tools:text="Product name"
             android:lines="1"/>
     </LinearLayout>
 
@@ -59,6 +60,7 @@
             android:layout_width="0dp"
             android:layout_weight="2"
             android:textAppearance="?android:textAppearanceMedium"
+            tools:text="20"
             android:lines="1" />
 
     </LinearLayout>
@@ -81,7 +83,32 @@
             android:layout_weight="2"
             android:layout_height="match_parent"
             android:textAppearance="?android:textAppearanceMedium"
+            tools:text="$10.00"
             android:lines="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/editor_seller_email_label"
+            android:fontFamily="sans-serif-medium"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/detail_item_seller_email"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:inputType="number"
+            tools:text="john.doe@gmail.com"
+            android:lines="1" />
+
     </LinearLayout>
 
     <LinearLayout

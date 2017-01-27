@@ -22,4 +22,6 @@
     <string name="editor_shipment_quantity_label">Shipment quantity</string>
     <string name="edit_load_picture_button">Load Picture</string>
     <string name="editor_product_image_description">Product image</string>
+    <string name="edit_email_label">Seller email</string>
+    <string name="editor_seller_email_label">Seller email</string>
 </resources>

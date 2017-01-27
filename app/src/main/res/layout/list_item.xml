@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="40dp"
     android:paddingLeft="16dp"
@@ -12,6 +13,7 @@
         android:layout_weight="0.4"
         android:gravity="left|center_vertical"
         android:focusable="false"
+        tools:text="Product Name"
         style="@style/itemRow"/>
 
     <TextView
@@ -20,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.2"
         android:gravity="center_horizontal|center_vertical"
-        android:focusable="false"
+        tools:text="20"
         style="@style/itemRow"/>
 
     <TextView
@@ -29,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.25"
         android:gravity="center_horizontal|center_vertical"
-        android:focusable="false"
+        tools:text="$10.0"
         style="@style/itemRow"/>
 
     <ImageButton
@@ -47,7 +49,6 @@
         android:layout_weight="0.1"
         android:tint="@color/colorPrimaryDark"
         android:layout_gravity="center"
-        android:focusable="false"
         android:layout_height="wrap_content"/>
 
 </LinearLayout>

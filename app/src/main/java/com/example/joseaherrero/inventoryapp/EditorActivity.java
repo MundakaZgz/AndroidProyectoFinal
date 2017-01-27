@@ -35,6 +35,7 @@ public class EditorActivity extends AppCompatActivity {
     private EditText mNameEditText;
     private EditText mQuantityEditText;
     private EditText mPriceEditText;
+    private EditText mSellerEmailEditText;
     private ImageView mImageView;
     private static int RESULT_LOAD_IMG = 1;
     private String imgDecodableString;
@@ -47,6 +48,7 @@ public class EditorActivity extends AppCompatActivity {
         mNameEditText = (EditText) findViewById(R.id.edit_item_name);
         mQuantityEditText = (EditText) findViewById(R.id.edit_item_quantity);
         mPriceEditText = (EditText) findViewById(R.id.edit_item_price);
+        mSellerEmailEditText = (EditText) findViewById(R.id.edit_item_seller_email);
         mImageView = (ImageView) findViewById(R.id.imgView);
 
         Button loadImageButton = (Button) findViewById(R.id.editor_load_image_button);
@@ -79,6 +81,7 @@ public class EditorActivity extends AppCompatActivity {
         String nameString = mNameEditText.getText().toString().trim();
         String quantityString = mQuantityEditText.getText().toString().trim();
         String priceString = mPriceEditText.getText().toString().trim();
+        String sellerEmailString = mSellerEmailEditText.getText().toString().trim();
 
         int quantity = -1;
         float price = -1;
@@ -93,6 +96,7 @@ public class EditorActivity extends AppCompatActivity {
         values.put(InventoryContract.InventoryEntry.COLUMN_INVENTORY_NAME, nameString);
         values.put(InventoryContract.InventoryEntry.COLUMN_INVENTORY_QUANTITY, quantity);
         values.put(InventoryContract.InventoryEntry.COLUMN_INVENTORY_PRICE, price);
+        values.put(InventoryContract.InventoryEntry.COLUMN_INVENTORY_SELLER_EMAIL, sellerEmailString);
         values.put(InventoryContract.InventoryEntry.COLUMN_INVENTORY_IMAGE, imgDecodableString);
 
         Uri newUri = null;

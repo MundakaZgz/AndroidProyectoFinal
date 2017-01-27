@@ -30,6 +30,7 @@ public class InventoryContract {
         public final static String COLUMN_INVENTORY_NAME = "name";
         public final static String COLUMN_INVENTORY_QUANTITY = "quantity";
         public final static String COLUMN_INVENTORY_PRICE = "price";
+        public final static String COLUMN_INVENTORY_SELLER_EMAIL = "seller_email";
         public final static String COLUMN_INVENTORY_IMAGE = "image";
 
     }

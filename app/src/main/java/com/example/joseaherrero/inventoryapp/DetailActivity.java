@@ -24,6 +24,7 @@ public class DetailActivity extends AppCompatActivity {
     private TextView mNameTextView;
     private TextView mQuantityTextView;
     private TextView mPriceTextView;
+    private TextView mSellerEmailTextView;
     private ImageView mImageView;
     private Button mDeleteItemButton;
     private Uri currentItemUri;
@@ -39,6 +40,7 @@ public class DetailActivity extends AppCompatActivity {
         mNameTextView = (TextView) findViewById(R.id.detail_item_name);
         mQuantityTextView = (TextView) findViewById(R.id.detail_item_quantity);
         mPriceTextView = (TextView) findViewById(R.id.detail_item_price);
+        mSellerEmailTextView = (TextView) findViewById(R.id.detail_item_seller_email);
         mImageView = (ImageView) findViewById(R.id.detail_item_image);
         mDeleteItemButton = (Button) findViewById(R.id.detail_item_remove_button);
         mGetShipmentButton = (Button) findViewById(R.id.detail_item_get_shipment_button);
@@ -105,6 +107,7 @@ public class DetailActivity extends AppCompatActivity {
                 InventoryContract.InventoryEntry.COLUMN_INVENTORY_NAME,
                 InventoryContract.InventoryEntry.COLUMN_INVENTORY_QUANTITY,
                 InventoryContract.InventoryEntry.COLUMN_INVENTORY_PRICE,
+                InventoryContract.InventoryEntry.COLUMN_INVENTORY_SELLER_EMAIL,
                 InventoryContract.InventoryEntry.COLUMN_INVENTORY_IMAGE
         };
 
@@ -119,11 +122,13 @@ public class DetailActivity extends AppCompatActivity {
             String name = cursor.getString(cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_INVENTORY_NAME));
             int quantity = cursor.getInt(cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_INVENTORY_QUANTITY));
             float price = cursor.getFloat(cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_INVENTORY_PRICE));
+            String sellerEmail = cursor.getString(cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_INVENTORY_SELLER_EMAIL));
             String image = cursor.getString(cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_INVENTORY_IMAGE));
 
             mNameTextView.setText(name);
             mQuantityTextView.setText(Utils.formatQuantity(quantity));
             mPriceTextView.setText(Utils.formatPrice(price));
+            mSellerEmailTextView.setText(sellerEmail);
             mImageView.setImageBitmap(BitmapFactory.decodeFile(image));
 
         }
