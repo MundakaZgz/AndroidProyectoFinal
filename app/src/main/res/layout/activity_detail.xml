@@ -100,12 +100,12 @@
             android:fontFamily="sans-serif-medium"
             android:textAppearance="?android:textAppearanceMedium" />
 
-        <EditText
+        <TextView
             android:id="@+id/detail_item_seller_email"
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
             android:layout_weight="2"
-            android:inputType="number"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:textAppearanceMedium"
             tools:text="john.doe@gmail.com"
             android:lines="1" />
 
