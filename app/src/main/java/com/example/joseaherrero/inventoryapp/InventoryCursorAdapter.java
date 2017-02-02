@@ -38,6 +38,8 @@ public class InventoryCursorAdapter extends CursorAdapter {
         TextView quantityTextView = (TextView) view.findViewById(R.id.quantity);
         ImageButton sellOneButton = (ImageButton) view.findViewById(R.id.sellOneButton);
 
+        sellOneButton.setFocusable(false);
+
         String name = cursor.getString(cursor.getColumnIndexOrThrow(InventoryEntry.COLUMN_INVENTORY_NAME));
         final int quantity = cursor.getInt(cursor.getColumnIndexOrThrow(InventoryEntry.COLUMN_INVENTORY_QUANTITY));
         float price = cursor.getFloat(cursor.getColumnIndexOrThrow(InventoryEntry.COLUMN_INVENTORY_PRICE));
