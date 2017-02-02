@@ -66,6 +66,9 @@ public class InventoryProvider extends ContentProvider {
             default:
                 throw new IllegalArgumentException("Cannot query unknown URI " + uri);
         }
+        //set notification Uri to the cursor
+        cursor.setNotificationUri(getContext().getContentResolver(), uri);
+
         return cursor;
     }
 
@@ -123,6 +126,9 @@ public class InventoryProvider extends ContentProvider {
             return null;
         }
 
+        //notify all listeners to change the uri
+        getContext().getContentResolver().notifyChange(uri, null);
+
         // Return the new URI with the ID (of the newly inserted row) appended at the end
         return ContentUris.withAppendedId(uri, id);
     }
@@ -143,18 +149,37 @@ public class InventoryProvider extends ContentProvider {
         SQLiteDatabase database = mDbHelper.getReadableDatabase();
         String selection = InventoryContract.InventoryEntry._ID + "=?";
         String[] selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
-        return database.update(InventoryContract.InventoryEntry.TABLE_NAME, values, selection, selectionArgs);
+        int rowUpdated =  database.update(InventoryContract.InventoryEntry.TABLE_NAME, values, selection, selectionArgs);
+
+        //if one or more row updated then notify thr all listener that has data at the
+        //given uri has changed
+        if (rowUpdated != 0)
+            getContext().getContentResolver().notifyChange(uri, null);
+
+        return rowUpdated;
     }
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
         final int match = sUriMatcher.match(uri);
+        int rowDeleted;
+
         switch (match) {
             case ITEM_ID:
-                return deleteItem(uri);
+                rowDeleted = deleteItem(uri);
+                break;
             default:
                 throw new IllegalArgumentException("Deletion is not supported for " + uri);
         }
+
+        //if 1 or more rows were deleted, then notify all listeners that the data at the
+        //given URI changed
+        if (rowDeleted != 0) {
+            getContext().getContentResolver().notifyChange(uri, null);
+        }
+
+        //return the number row deleted
+        return rowDeleted;
     }
 
     private int deleteItem(Uri uri) {
@@ -163,14 +188,14 @@ public class InventoryProvider extends ContentProvider {
         // Delete the selected item with the given values
         String selection = InventoryContract.InventoryEntry._ID + "=?";
         String[] selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
-        long id = database.delete(InventoryContract.InventoryEntry.TABLE_NAME, selection, selectionArgs);
+        int id = database.delete(InventoryContract.InventoryEntry.TABLE_NAME, selection, selectionArgs);
         // If the ID is -1, then the insertion failed. Log error and return null.
         if(id == -1) {
             Log.e(LOG_TAG, "Failed to deleting row for " + uri);
             return -1;
         }
 
-        return 0;
+        return id;
     };
 
     @Nullable

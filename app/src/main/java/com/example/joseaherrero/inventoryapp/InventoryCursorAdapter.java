@@ -39,6 +39,7 @@ public class InventoryCursorAdapter extends CursorAdapter {
         ImageButton sellOneButton = (ImageButton) view.findViewById(R.id.sellOneButton);
 
         sellOneButton.setFocusable(false);
+        sellOneButton.setTag(cursor.getInt(cursor.getColumnIndexOrThrow(InventoryEntry._ID))+ "");
 
         String name = cursor.getString(cursor.getColumnIndexOrThrow(InventoryEntry.COLUMN_INVENTORY_NAME));
         final int quantity = cursor.getInt(cursor.getColumnIndexOrThrow(InventoryEntry.COLUMN_INVENTORY_QUANTITY));
@@ -51,7 +52,7 @@ public class InventoryCursorAdapter extends CursorAdapter {
                     ContentValues values = new ContentValues();
                     values.put(InventoryContract.InventoryEntry.COLUMN_INVENTORY_QUANTITY, quantity - 1);
                     String selection = InventoryContract.InventoryEntry._ID;
-                    Uri currentItemUri = ContentUris.withAppendedId(InventoryContract.InventoryEntry.CONTENT_URI, cursor.getInt(cursor.getColumnIndexOrThrow(InventoryEntry._ID)));
+                    Uri currentItemUri = ContentUris.withAppendedId(InventoryContract.InventoryEntry.CONTENT_URI, Long.parseLong(v.getTag().toString()));
                     context.getContentResolver().update(currentItemUri, values, null, null);
 
                 }
