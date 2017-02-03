@@ -37,7 +37,7 @@ public class EditorActivity extends AppCompatActivity {
     private EditText mPriceEditText;
     private EditText mSellerEmailEditText;
     private ImageView mImageView;
-    private static int RESULT_LOAD_IMG = 1;
+    private static final int RESULT_LOAD_IMG = 1;
     private String imgDecodableString;
 
     @Override
@@ -125,7 +125,7 @@ public class EditorActivity extends AppCompatActivity {
         mImageView.setImageResource(android.R.color.transparent);
     }
 
-    public void loadImagefromGallery(View view) {
+    private void loadImagefromGallery(View view) {
         // Here, thisActivity is the current activity
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)

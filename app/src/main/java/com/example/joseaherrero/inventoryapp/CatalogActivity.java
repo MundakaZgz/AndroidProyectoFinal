@@ -19,7 +19,7 @@ import com.example.joseaherrero.inventoryapp.data.InventoryContract;
 
 public class CatalogActivity extends AppCompatActivity  implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    public static final int LOAD_PRODUCTS = 1;
+    private static final int LOAD_PRODUCTS = 1;
     private InventoryCursorAdapter mInventoryCursorAdapter;
 
     @Override
