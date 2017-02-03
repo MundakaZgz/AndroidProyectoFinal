@@ -150,6 +150,7 @@ public class DetailActivity extends AppCompatActivity {
 
         }
 
+        cursor.close();
     }
 
     private void composeEmail(int requiredQuantity) {
