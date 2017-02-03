@@ -81,13 +81,11 @@ public class DetailActivity extends AppCompatActivity {
                     return;
                 }
 
-                int newQuantityInInventory = currentQuantity - quantityToRequest;
-
-                if(quantityToRequest <= 0 || newQuantityInInventory <= 0) {
+                if(quantityToRequest <= 0) {
                     return;
                 }
 
-                updateQuantity(newQuantityInInventory);
+                composeEmail(quantityToRequest);
             }
         });
 
@@ -133,6 +131,35 @@ public class DetailActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    private void composeEmail(int requiredQuantity) {
+
+        String productName = mNameTextView.getText().toString().trim();
+        String[] emails = {mSellerEmailTextView.getText().toString().trim()};
+
+        String subject = "New order";
+
+        StringBuilder message = new StringBuilder();
+        message.append("Dear seller, \nI would like to order ");
+        message.append(requiredQuantity);
+        message.append(" unit");
+        if (requiredQuantity > 1) {
+            message.append("s");
+        }
+        message.append(" of your product ");
+        message.append(productName);
+        message.append(".\nThank you very much!");
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_EMAIL, emails);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, message.toString());
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 
     private void updateQuantity(int newQuantityInInventory) {
