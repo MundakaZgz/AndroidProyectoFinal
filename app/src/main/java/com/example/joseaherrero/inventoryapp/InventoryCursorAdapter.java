@@ -50,7 +50,6 @@ public class InventoryCursorAdapter extends CursorAdapter {
                 if (quantity > 0) {
                     ContentValues values = new ContentValues();
                     values.put(InventoryContract.InventoryEntry.COLUMN_INVENTORY_QUANTITY, quantity - 1);
-                    String selection = InventoryContract.InventoryEntry._ID;
                     Uri currentItemUri = ContentUris.withAppendedId(InventoryContract.InventoryEntry.CONTENT_URI, Long.parseLong(v.getTag().toString()));
                     context.getContentResolver().update(currentItemUri, values, null, null);
 

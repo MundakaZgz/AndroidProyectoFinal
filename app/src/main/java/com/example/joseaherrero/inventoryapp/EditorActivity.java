@@ -99,7 +99,7 @@ public class EditorActivity extends AppCompatActivity {
         values.put(InventoryContract.InventoryEntry.COLUMN_INVENTORY_SELLER_EMAIL, sellerEmailString);
         values.put(InventoryContract.InventoryEntry.COLUMN_INVENTORY_IMAGE, imgDecodableString);
 
-        Uri newUri = null;
+        Uri newUri;
 
         try {
             // Insert a new item into the provider, returnig the content URI for the new item.
@@ -132,15 +132,8 @@ public class EditorActivity extends AppCompatActivity {
                 != PackageManager.PERMISSION_GRANTED) {
 
             // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+            if (!ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.READ_EXTERNAL_STORAGE)) {
-
-                // Show an expanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
-
-            } else {
-
                 // No explanation needed, we can request the permission.
 
                 ActivityCompat.requestPermissions(this,
@@ -191,6 +184,7 @@ public class EditorActivity extends AppCompatActivity {
 
                 // Get the cursor
                 Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+
                 // Move to first row
                 cursor.moveToFirst();
 

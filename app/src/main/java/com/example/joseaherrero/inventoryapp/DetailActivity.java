@@ -69,7 +69,6 @@ public class DetailActivity extends AppCompatActivity {
         mOrderShipmentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int currentQuantity = Integer.parseInt(mQuantityTextView.getText().toString());
                 int quantityToRequest;
                 try {
                     quantityToRequest = Integer.parseInt(mQuantityEditText.getText().toString().trim());
@@ -134,7 +133,7 @@ public class DetailActivity extends AppCompatActivity {
                 null,
                 null);
 
-        if(cursor.getCount() == 1) {
+        if(cursor != null && cursor.getCount() == 1) {
             cursor.moveToFirst();
             String name = cursor.getString(cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_INVENTORY_NAME));
             int quantity = cursor.getInt(cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_INVENTORY_QUANTITY));
@@ -185,8 +184,6 @@ public class DetailActivity extends AppCompatActivity {
     private void updateQuantity(int newQuantityInInventory) {
         ContentValues values = new ContentValues();
         values.put(InventoryContract.InventoryEntry.COLUMN_INVENTORY_QUANTITY, newQuantityInInventory);
-        String selection = InventoryContract.InventoryEntry._ID;
-
         getContentResolver().update(currentItemUri, values, null, null);
         onBackPressed();
     }
