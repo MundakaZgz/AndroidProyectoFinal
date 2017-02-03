@@ -153,7 +153,7 @@
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="wrap_content"
-            android:text="Get shipment!"/>
+            android:text="@string/detail_button_get_shipment"/>
 
     </LinearLayout>
 
@@ -162,7 +162,7 @@
         style="@style/dangerButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Remove item"
+        android:text="@string/detail_button_remove_item"
      />
 
 </LinearLayout>

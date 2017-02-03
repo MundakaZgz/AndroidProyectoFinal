@@ -27,4 +27,6 @@
     <string name="confirmation_dialog_message">Delete?</string>
     <string name="confirmation_dialog_yes">Yes</string>
     <string name="confirmation_dialog_no">No</string>
+    <string name="detail_button_get_shipment">Get shipment!</string>
+    <string name="detail_button_remove_item">Remove item</string>
 </resources>
