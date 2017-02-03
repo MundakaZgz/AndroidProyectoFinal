@@ -196,7 +196,7 @@ public class InventoryProvider extends ContentProvider {
         }
 
         return id;
-    };
+    }
 
     @Nullable
     @Override
