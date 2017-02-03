@@ -173,16 +173,8 @@ public class EditorActivity extends AppCompatActivity {
                     // Start the Intent
                     startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
 
-                } else {
-
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
                 }
-                return;
             }
-
-            // other 'case' lines to check for other
-            // permissions this app might request
         }
     }
 
