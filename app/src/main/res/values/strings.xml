@@ -24,4 +24,7 @@
     <string name="editor_product_image_description">Product image</string>
     <string name="edit_email_label">Seller email</string>
     <string name="editor_seller_email_label">Seller email</string>
+    <string name="confirmation_dialog_message">Delete?</string>
+    <string name="confirmation_dialog_yes">Yes</string>
+    <string name="confirmation_dialog_no">No</string>
 </resources>

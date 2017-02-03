@@ -1,11 +1,13 @@
 package com.example.joseaherrero.inventoryapp;
 
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -92,8 +94,30 @@ public class DetailActivity extends AppCompatActivity {
         mDeleteItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getContentResolver().delete(currentItemUri,null, null);
-                onBackPressed();
+
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                //Yes button clicked
+                                getContentResolver().delete(currentItemUri, null, null);
+                                onBackPressed();
+                                break;
+
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                //No button clicked
+                                break;
+                        }
+                    }
+                };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(DetailActivity.this);
+                builder.setMessage(getString(R.string.confirmation_dialog_message));
+                builder.setPositiveButton(getString(R.string.confirmation_dialog_yes), dialogClickListener);
+                builder.setNegativeButton(getString(R.string.confirmation_dialog_no), dialogClickListener);
+                builder.show();
+
             }
         });
 
