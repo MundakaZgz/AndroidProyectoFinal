@@ -133,23 +133,26 @@ public class DetailActivity extends AppCompatActivity {
                 null,
                 null);
 
-        if(cursor != null && cursor.getCount() == 1) {
-            cursor.moveToFirst();
-            String name = cursor.getString(cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_INVENTORY_NAME));
-            int quantity = cursor.getInt(cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_INVENTORY_QUANTITY));
-            float price = cursor.getFloat(cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_INVENTORY_PRICE));
-            String sellerEmail = cursor.getString(cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_INVENTORY_SELLER_EMAIL));
-            String image = cursor.getString(cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_INVENTORY_IMAGE));
+        if(cursor != null) {
+            if(cursor.getCount() == 1) {
+                cursor.moveToFirst();
+                String name = cursor.getString(cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_INVENTORY_NAME));
+                int quantity = cursor.getInt(cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_INVENTORY_QUANTITY));
+                float price = cursor.getFloat(cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_INVENTORY_PRICE));
+                String sellerEmail = cursor.getString(cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_INVENTORY_SELLER_EMAIL));
+                String image = cursor.getString(cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_INVENTORY_IMAGE));
 
-            mNameTextView.setText(name);
-            mQuantityTextView.setText(Utils.formatQuantity(quantity));
-            mPriceTextView.setText(Utils.formatPrice(price));
-            mSellerEmailTextView.setText(sellerEmail);
-            mImageView.setImageBitmap(BitmapFactory.decodeFile(image));
+                mNameTextView.setText(name);
+                mQuantityTextView.setText(Utils.formatQuantity(quantity));
+                mPriceTextView.setText(Utils.formatPrice(price));
+                mSellerEmailTextView.setText(sellerEmail);
+                mImageView.setImageBitmap(BitmapFactory.decodeFile(image));
 
+            }
+
+            cursor.close();
         }
 
-        cursor.close();
     }
 
     private void composeEmail(int requiredQuantity) {
