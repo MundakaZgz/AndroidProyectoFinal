@@ -25,13 +25,8 @@ public class DetailActivity extends AppCompatActivity {
 
     private TextView mNameTextView;
     private TextView mQuantityTextView;
-    private TextView mPriceTextView;
     private TextView mSellerEmailTextView;
-    private ImageView mImageView;
-    private Button mDeleteItemButton;
     private Uri currentItemUri;
-    private Button mGetShipmentButton;
-    private Button mOrderShipmentButton;
     private EditText mQuantityEditText;
 
     @Override
@@ -41,12 +36,12 @@ public class DetailActivity extends AppCompatActivity {
 
         mNameTextView = (TextView) findViewById(R.id.detail_item_name);
         mQuantityTextView = (TextView) findViewById(R.id.detail_item_quantity);
-        mPriceTextView = (TextView) findViewById(R.id.detail_item_price);
+        TextView mPriceTextView = (TextView) findViewById(R.id.detail_item_price);
         mSellerEmailTextView = (TextView) findViewById(R.id.detail_item_seller_email);
-        mImageView = (ImageView) findViewById(R.id.detail_item_image);
-        mDeleteItemButton = (Button) findViewById(R.id.detail_item_remove_button);
-        mGetShipmentButton = (Button) findViewById(R.id.detail_item_get_shipment_button);
-        mOrderShipmentButton = (Button) findViewById(R.id.detail_item_order_button);
+        ImageView mImageView = (ImageView) findViewById(R.id.detail_item_image);
+        Button mDeleteItemButton = (Button) findViewById(R.id.detail_item_remove_button);
+        Button mGetShipmentButton = (Button) findViewById(R.id.detail_item_get_shipment_button);
+        Button mOrderShipmentButton = (Button) findViewById(R.id.detail_item_order_button);
         mQuantityEditText = (EditText) findViewById(R.id.detail_item_order_quantity);
 
         mGetShipmentButton.setOnClickListener(new View.OnClickListener() {
