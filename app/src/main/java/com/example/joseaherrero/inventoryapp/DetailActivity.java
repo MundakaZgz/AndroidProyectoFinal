@@ -171,17 +171,17 @@ public class DetailActivity extends AppCompatActivity {
         }
         message.append(" of your product ");
         message.append(productName);
-        message.append(".\nThank you very much!");
+        message.append(".\n\nThank you very much!");
 
-        Intent intent = new Intent(Intent.ACTION_SEND);
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setType("text/plain");
         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
         intent.putExtra(Intent.EXTRA_EMAIL, emails);
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
         intent.putExtra(Intent.EXTRA_TEXT, message.toString());
 
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
-        }
+        startActivity(Intent.createChooser(intent, "Choose an email client :"));
+        
     }
 
     private void updateQuantity(int newQuantityInInventory) {
@@ -191,7 +191,4 @@ public class DetailActivity extends AppCompatActivity {
         onBackPressed();
     }
 
-    private void clearFields() {
-        mQuantityEditText.setText("");
-    }
 }

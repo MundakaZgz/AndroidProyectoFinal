@@ -110,6 +110,7 @@ public class EditorActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, getString(R.string.toast_insert_item_success), Toast.LENGTH_SHORT).show();
                 clearForm();
+                finish();
             }
         } catch (IllegalArgumentException e) {
             Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
