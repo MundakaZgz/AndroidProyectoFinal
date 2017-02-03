@@ -10,7 +10,6 @@
     <string name="editor_add_item">Add item</string>
     <string name="toast_insert_item_success">Insert item success</string>
     <string name="toast_insert_item_failed">Insert item failed</string>
-    <string name="list_header_number">#</string>
     <string name="list_header_name">Name</string>
     <string name="list_header_quantity">Quantity</string>
     <string name="list_header_price">Price</string>
@@ -19,7 +18,6 @@
     <string name="editor_image_picker_no_selection">You haven\'t picked Image</string>
     <string name="editor_order_quantity_label">Order quantity</string>
     <string name="editor_order_now_button">Order now!</string>
-    <string name="editor_shipment_quantity_label">Shipment quantity</string>
     <string name="edit_load_picture_button">Load Picture</string>
     <string name="editor_product_image_description">Product image</string>
     <string name="edit_email_label">Seller email</string>

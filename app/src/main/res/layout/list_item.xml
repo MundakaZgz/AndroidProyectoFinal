@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.4"
-        android:gravity="left|center_vertical"
+        android:gravity="start|center_vertical"
         android:focusable="false"
         tools:text="Product Name"
         style="@style/itemRow"/>
