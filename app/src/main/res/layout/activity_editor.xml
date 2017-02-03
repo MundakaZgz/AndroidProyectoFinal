@@ -118,19 +118,19 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/editor_add_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/editor_add_item"
-            style="@style/button"/>
-
-        <Button
             android:id="@+id/editor_cancel_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/editor_cancel"
+            style="@style/button"/>
+
+        <Button
+            android:id="@+id/editor_add_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/editor_add_item"
             style="@style/button"/>
 
     </LinearLayout>
